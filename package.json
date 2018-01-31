@@ -1,46 +1,52 @@
 {
-  "_from": "pomelo-admin@1.0.0",
-  "_id": "pomelo-admin@1.0.0",
-  "_inBundle": false,
-  "_integrity": "sha1-kX9ytSGvlbxTQmg6pOyHC+Z/gE4=",
-  "_location": "/pomelo-admin",
-  "_phantomChildren": {
-    "log4js": "2.4.1"
+  "name": "omelo-admin",
+  "version": "1.0.0",
+  "private": false,
+  "deprecated": false,
+  "description": "`omelo-admin` is base pomelo, support es6 version",
+  "homepage": "https://github.com/linyngfly/omelo-admin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linyngfly/omelo-admin.git"
   },
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "pomelo-admin@1.0.0",
-    "name": "pomelo-admin",
-    "escapedName": "pomelo-admin",
-    "rawSpec": "1.0.0",
-    "saveSpec": null,
-    "fetchSpec": "1.0.0"
+  "scripts": {
+    "test": "grunt"
   },
-  "_requiredBy": [
-    "/"
+  "bugs": {
+    "url": "https://github.com/linyngfly/omelo-admin/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/linyngfly/omelo-admin#license"
+    }
   ],
-  "_resolved": "https://registry.npmjs.org/pomelo-admin/-/pomelo-admin-1.0.0.tgz",
-  "_shasum": "917f72b521af95bc5342683aa4ec870be67f804e",
-  "_spec": "pomelo-admin@1.0.0",
-  "_where": "E:\\develop\\lib\\omelo\\omelo",
-  "bundleDependencies": false,
+  "keywords": [
+    "omelo-admin",
+    "pomelo-admin",
+    "pomelo",
+    "framework",
+    "game",
+    "web",
+    "realtime",
+    "server"
+  ],
   "dependencies": {
     "mqtt-connection": "3.0.0",
     "pomelo-monitor": "0.3.7",
-    "pomelo-scheduler": "0.3.8"
+    "pomelo-scheduler": "0.3.8",
+    "pomelo-logger": "0.1.7"
   },
-  "deprecated": false,
-  "description": "`pomelo-admin` is an admin console library for [pomelo](https://github.com/NetEase/pomelo). It provides the a series of utilities to monitor the `pomelo` server clusters.",
   "devDependencies": {
     "flow": ">=0.0.1",
     "mocha": ">=0.0.1",
     "should": ">=0.0.1"
   },
-  "name": "pomelo-admin",
-  "peerDependencies": {
-    "pomelo-logger": "0.1.7"
-  },
-  "private": false,
-  "version": "1.0.0"
+  "contributors": [
+    {
+      "name": "linyngfly",
+      "email": "linyngfly@163.com"
+    }
+  ]
+
 }
