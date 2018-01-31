@@ -7,6 +7,7 @@ node_modules/*
 .settings/
 **/*.svn
 *.svn
+.git/*
 *.sublime-project
 *.sublime-workspace
 npm-debug.log
