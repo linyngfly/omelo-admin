@@ -63,13 +63,13 @@ The relations of the components is as below:
 ##Usage
 
 ```javascript
-var admin = require("pomelo-admin");
+let admin = require("pomelo-admin");
 ```
 
 Create a consoleService instance in master process.
 
 ```javascript
-var masterConsole = admin.createMasterConsole({  
+let masterConsole = admin.createMasterConsole({  
     port: masterPort  
 });  
 ```
@@ -91,7 +91,7 @@ masterConsole.start(function(err) {
 Create a consoleService instance in monitor process. 
 
 ```javascript
-var monitorConsole = admin.createMonitorConsole({  
+let monitorConsole = admin.createMonitorConsole({  
     id: serverId,  
     type: serverType,  
     host: masterInfo.host,  
@@ -107,7 +107,7 @@ Developers can customize modules to collect and export additional status as they
 ###Simple example  
 
 ```javascript
-var Module = function(app, opts) {
+let Module = function(app, opts) {
   opts = opts || {};
   this.type = opts.type || 'pull';  // pull or push 
   this.interval = opts.interval || 5; // pull or push interval
@@ -118,7 +118,7 @@ Module.moduleId = 'helloPomelo';
 module.exports = Module;
 
 Module.prototype.monitorHandler = function(agent, msg) {
-  var word = agent.id + ' hello pomelo';
+  let word = agent.id + ' hello pomelo';
   // notify admin messages to master
   agent.notify(Module.moduleId, {serverId: agent.id, body: word});
 };
@@ -130,7 +130,7 @@ Module.prototype.masterHandler = function(agent, msg) {
     return;
   }
   // collect data from monitor
-  var data = agent.get(Module.moduleId);
+  let data = agent.get(Module.moduleId);
   if(!data) {
     data = {};
     agent.set(Module.moduleId, data);

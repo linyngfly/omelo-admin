@@ -1,33 +1,33 @@
-var should = require('should');
-var flow = require('flow');
-var ConsoleService = require('..');
+let should = require('should');
+let flow = require('flow');
+let ConsoleService = require('..');
 
-var WAIT_TIME = 100;
+let WAIT_TIME = 100;
 
-var masterHost = '127.0.0.1';
-var masterPort = 3333;
+let masterHost = '127.0.0.1';
+let masterPort = 3333;
 
 describe('console service', function() {
 	it('should forward message from master to the monitorHandler method of the module of the right monitor, and get the response by masterAgent.request', function(done) {
-		var monitorId1 = 'connector-server-1';
-		var monitorId2 = 'area-server-1';
-		var monitorType1 = 'connector';
-		var monitorType2 = 'area';
-		var moduleId1 = 'testModuleId1';
-		var moduleId2 = 'testModuleId2';
-		var msg1 = {msg: 'message to monitor1'};
-		var msg2 = {msg: 'message to monitor2'};
+		let monitorId1 = 'connector-server-1';
+		let monitorId2 = 'area-server-1';
+		let monitorType1 = 'connector';
+		let monitorType2 = 'area';
+		let moduleId1 = 'testModuleId1';
+		let moduleId2 = 'testModuleId2';
+		let msg1 = {msg: 'message to monitor1'};
+		let msg2 = {msg: 'message to monitor2'};
 
-		var req1Count = 0;
-		var req2Count = 0;
-		var resp1Count = 0;
-		var resp2Count = 0;
+		let req1Count = 0;
+		let req2Count = 0;
+		let resp1Count = 0;
+		let resp2Count = 0;
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
-		var monitorConsole1 = ConsoleService.createMonitorConsole({
+		let monitorConsole1 = ConsoleService.createMonitorConsole({
 			host: masterHost, 
 			port: masterPort, 
 			id: monitorId1, 
@@ -43,7 +43,7 @@ describe('console service', function() {
 			}
 		});
 
-		var monitorConsole2 = ConsoleService.createMonitorConsole({
+		let monitorConsole2 = ConsoleService.createMonitorConsole({
 			host: masterHost, 
 			port: masterPort, 
 			id: monitorId2, 
@@ -101,14 +101,14 @@ describe('console service', function() {
 	});
 
 	it('should forward message from monitor to the masterHandler of the right module of the master by monitor.notify', function(done) {
-		var monitorId = 'connector-server-1';
-		var monitorType = 'connector';
-		var moduleId = 'testModuleId';
-		var orgMsg = {msg: 'message to master'};
+		let monitorId = 'connector-server-1';
+		let monitorType = 'connector';
+		let moduleId = 'testModuleId';
+		let orgMsg = {msg: 'message to master'};
 
-		var reqCount = 0;
+		let reqCount = 0;
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
@@ -120,7 +120,7 @@ describe('console service', function() {
 			}
 		});
 
-		var monitorConsole =ConsoleService.createMonitorConsole({
+		let monitorConsole =ConsoleService.createMonitorConsole({
 			host: masterHost, 
 			port: masterPort, 
 			id: monitorId, 
@@ -149,12 +149,12 @@ describe('console service', function() {
 	});
 
 	it('should fail if the module is disable', function(done) {
-		var monitorId = 'connector-server-1';
-		var monitorType = 'connector';
-		var moduleId = 'testModuleId';
-		var orgMsg = {msg: 'message to someone'};
+		let monitorId = 'connector-server-1';
+		let monitorType = 'connector';
+		let moduleId = 'testModuleId';
+		let orgMsg = {msg: 'message to someone'};
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
@@ -165,7 +165,7 @@ describe('console service', function() {
 			}
 		});
 
-		var monitorConsole = ConsoleService.createMonitorConsole({
+		let monitorConsole = ConsoleService.createMonitorConsole({
 			host: masterHost, 
 			port: masterPort, 
 			id: monitorId, 
@@ -202,11 +202,11 @@ describe('console service', function() {
 	});
 
 	it('should fail if the monitor not exists', function(done) {
-		var monitorId = 'connector-server-1';
-		var moduleId = 'testModuleId';
-		var orgMsg = {msg: 'message to someone'};
+		let monitorId = 'connector-server-1';
+		let moduleId = 'testModuleId';
+		let orgMsg = {msg: 'message to someone'};
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
@@ -228,12 +228,12 @@ describe('console service', function() {
 	});
 
 	it('should invoke masterHandler periodically in pull mode', function(done) {
-		var moduleId = 'testModuleId';
-		var intervalSec = 1;
-		var invokeCount = 0;
-		var turn = 2;
+		let moduleId = 'testModuleId';
+		let intervalSec = 1;
+		let invokeCount = 0;
+		let turn = 2;
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
@@ -255,18 +255,18 @@ describe('console service', function() {
 	});
 
 	it('should invoke monitorHandler periodically in push mode', function(done) {
-		var monitorId = 'connector-server-1';
-		var monitorType = 'connector';
-		var moduleId = 'testModuleId';
-		var intervalSec = 1;
-		var invokeCount = 0;
-		var turn = 2;
+		let monitorId = 'connector-server-1';
+		let monitorType = 'connector';
+		let moduleId = 'testModuleId';
+		let intervalSec = 1;
+		let invokeCount = 0;
+		let turn = 2;
 
-		var masterConsole = ConsoleService.createMasterConsole({
+		let masterConsole = ConsoleService.createMasterConsole({
 			port: masterPort
 		});
 
-		var monitorConsole = ConsoleService.createMonitorConsole({
+		let monitorConsole = ConsoleService.createMonitorConsole({
 			host: masterHost, 
 			port: masterPort, 
 			id: monitorId, 

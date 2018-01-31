@@ -1,10 +1,10 @@
-var MonitorConsole = require('../lib/consoleService');
-var TestModule = require('./module');
-var port = 3300;
-// var host = '192.168.131.1';
-var host = 'localhost';
+let MonitorConsole = require('../lib/consoleService');
+let TestModule = require('./module');
+let port = 3300;
+// let host = '192.168.131.1';
+let host = 'localhost';
 
-var opts = {
+let opts = {
 	id: 'test-server-1',
 	type: 'test',
 	host: host,
@@ -16,8 +16,8 @@ var opts = {
 	}
 }
 
-var monitorConsole = MonitorConsole.createMonitorConsole(opts);
-var module = TestModule();
+let monitorConsole = MonitorConsole.createMonitorConsole(opts);
+let module = TestModule();
 monitorConsole.register(TestModule.moduleId, module);
 
 monitorConsole.start(function() {

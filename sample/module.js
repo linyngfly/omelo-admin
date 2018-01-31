@@ -1,7 +1,7 @@
-var logger = require('pomelo-logger').getLogger('pomelo-admin', 'test_module');
+let logger = require('pomelo-logger').getLogger('pomelo-admin', 'test_module');
 
-var DEFAULT_INTERVAL = 5; // in second
-var DEFAULT_DELAY = 1; // in second
+let DEFAULT_INTERVAL = 5; // in second
+let DEFAULT_DELAY = 1; // in second
 
 module.exports = function(opts) {
 	return new Module(opts);
@@ -9,7 +9,7 @@ module.exports = function(opts) {
 
 module.exports.moduleId = 'test_module';
 
-var Module = function(opts) {
+let Module = function(opts) {
 	opts = opts || {};
 	this.type = opts.type || 'pull';
 	this.interval = opts.interval || DEFAULT_INTERVAL;
@@ -30,7 +30,7 @@ Module.prototype.monitorHandler = function(agent, msg, cb) {
 Module.prototype.masterHandler = function(agent, msg, cb) {
 	if (!msg) {
 		// agent.notifyAll(module.exports.moduleId);
-		var sendMsg = {
+		let sendMsg = {
 			id: Date.now()
 		}
 		agent.request('test-server-1', module.exports.moduleId, sendMsg, function(err, r) {
