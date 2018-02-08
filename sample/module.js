@@ -1,4 +1,4 @@
-let logger = require('pomelo-logger').getLogger('pomelo-admin', 'test_module');
+let logger = require('omelo-logger').getLogger('omelo-admin', 'test_module');
 
 let DEFAULT_INTERVAL = 5; // in second
 let DEFAULT_DELAY = 1; // in second
