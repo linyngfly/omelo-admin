@@ -33,9 +33,9 @@
   ],
   "dependencies": {
     "mqtt-connection": "3.0.0",
-    "pomelo-monitor": "0.3.7",
-    "pomelo-scheduler": "0.3.8",
-    "pomelo-logger": "0.1.7"
+    "omelo-monitor": "0.3.7",
+    "omelo-scheduler": "0.3.8",
+    "omelo-logger": "0.1.7"
   },
   "devDependencies": {
     "flow": ">=0.0.1",
