@@ -1,24 +1,24 @@
-#pomelo-admin
+#omelo-admin
 
-`pomelo-admin` is an admin console library for [pomelo](https://github.com/NetEase/pomelo). It provides the a series of utilities to monitor the `pomelo` server clusters.
+`omelo-admin` is an admin console library for [omelo](https://github.com/NetEase/omelo). It provides the a series of utilities to monitor the `omelo` server clusters.
 
 ##Installation
 
 ```
-npm install pomelo-admin
+npm install omelo-admin
 ```
 
 ##Basic conception
 
 ###Process roles
 
-There are three process roles in `pomelo-admin`: master, monitor and client.
+There are three process roles in `omelo-admin`: master, monitor and client.
 
 + master - the master server process, collects and maintains all the client and monitor status and exports the cluster status for the clients.  
 
 + monitor - monitor proxy, in every server process which needs to be monitored. It should be started during the process starts and registers itself to the master server and reports the monitored process status to the master. 
 
-+ client - `pomelo-admin` client process that fetches the status from master server, such as [pomelo-admin-web](https://github.com/NetEase/pomelo-admin-web) and [pomelo-cli](https://github.com/NetEase/pomelo-cli).
++ client - `omelo-admin` client process that fetches the status from master server, such as [omelo-admin-web](https://github.com/NetEase/omelo-admin-web) and [omelo-cli](https://github.com/NetEase/omelo-cli).
 
 ###Message types
 
@@ -32,19 +32,19 @@ There are two message types of the communication between processes.
 
 ###ConsoleService 
 
-Main service of `pomelo-admin` that runs in both master and monitor processes. It maintains the master agent or monitor agent for the process, loads the registed modules and provides the messages routing service for the messages from other processes.
+Main service of `omelo-admin` that runs in both master and monitor processes. It maintains the master agent or monitor agent for the process, loads the registed modules and provides the messages routing service for the messages from other processes.
 
 ###MasterAgent  
 
-`pomelo-admin` agent that runs on the master process to provide the basic network communication and protocol encoding and decoding.
+`omelo-admin` agent that runs on the master process to provide the basic network communication and protocol encoding and decoding.
 
 ###MonitorAgent  
 
-`pomelo-admin` agent that runs on the monitor process to provide the basic network communication and protocol encoding and decoding. 
+`omelo-admin` agent that runs on the monitor process to provide the basic network communication and protocol encoding and decoding. 
 
 ###Module  
  
-Module is the place to implement the monitor logic, such as process status collecting. Developer can register modules in `pomelo-admin` to customize all kinds of system monitors.
+Module is the place to implement the monitor logic, such as process status collecting. Developer can register modules in `omelo-admin` to customize all kinds of system monitors.
 
 There are three optional callback functions in each module.
 
@@ -57,13 +57,13 @@ There are three optional callback functions in each module.
 The relations of the components is as below:
 
 <center>
-![pomelo-admin-arch](http://pomelo.netease.com/resource/documentImage/pomelo-admin-arch.png)
+![omelo-admin-arch](http://omelo.netease.com/resource/documentImage/omelo-admin-arch.png)
 </center>
 
 ##Usage
 
 ```javascript
-let admin = require("pomelo-admin");
+let admin = require("omelo-admin");
 ```
 
 Create a consoleService instance in master process.
@@ -118,7 +118,7 @@ Module.moduleId = 'helloPomelo';
 module.exports = Module;
 
 Module.prototype.monitorHandler = function(agent, msg) {
-  let word = agent.id + ' hello pomelo';
+  let word = agent.id + ' hello omelo';
   // notify admin messages to master
   agent.notify(Module.moduleId, {serverId: agent.id, body: word});
 };
@@ -147,7 +147,7 @@ Module.prototype.clientHandler = function(agent, msg, cb) {
 
 ###Register customized modules
 
-you must register your customized modules to pomelo to make it work.  
+you must register your customized modules to omelo to make it work.  
 write in app.js which is in your project's root directory  
 
 ```javascript
@@ -157,7 +157,7 @@ app.configure('production|development', function() {
 ```
 
 ##User level control  
-pomelo-admin defines user level for admin client to login master server in this schema  
+omelo-admin defines user level for admin client to login master server in this schema  
 ```javascript
 {
     "id": "user-1",
@@ -195,8 +195,8 @@ adminUser.json
 ```
 
 ##Self-defined auth 
-pomelo-admin provides a simple auth function in [pomelo-admin auth](https://github.com/NetEase/pomelo-admin/blob/master/lib/util/utils.js#L78)  
-developers can provide self-defined auth in pomelo by  
+omelo-admin provides a simple auth function in [omelo-admin auth](https://github.com/NetEase/omelo-admin/blob/master/lib/util/utils.js#L78)  
+developers can provide self-defined auth in omelo by  
 in master server
 ```javascript
 app.set('adminAuthUser', function(msg, cb){
@@ -210,8 +210,8 @@ app.set('adminAuthUser', function(msg, cb){
 
 ##Server master auth  
 server connect to master with authorization  
-pomelo-admin provides a simple auth function in [pomelo-admin auth](https://github.com/NetEase/pomelo-admin/blob/master/lib/util/utils.js#L117)  
-developers can provide self-defined auth in pomelo by  
+omelo-admin provides a simple auth function in [omelo-admin auth](https://github.com/NetEase/omelo-admin/blob/master/lib/util/utils.js#L117)  
+developers can provide self-defined auth in omelo by  
 in master server
 ```javascript
 app.set('adminAuthServerMaster', function(msg, cb){
@@ -251,11 +251,11 @@ adminServer.json
 ```
 
 **type** is the serverType, **token** is a string you can genrate by yourself  
-when using in pomelo, you should fill all your servers with type:token  
+when using in omelo, you should fill all your servers with type:token  
 
 ###Notes  
 
-`pomelo-admin` provides a series of useful system modules by default. But most of them are turned off by default. Add a simple line of code in `app.js` as below to enable them.
+`omelo-admin` provides a series of useful system modules by default. But most of them are turned off by default. Add a simple line of code in `app.js` as below to enable them.
 
 ```javascript
 app.configure('development', function() {

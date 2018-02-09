@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "deprecated": false,
-  "description": "`omelo-admin` is base pomelo, support es6 version",
+  "description": "`omelo-admin` is base omelo, support es6 version",
   "homepage": "https://github.com/linyngfly/omelo-admin",
   "repository": {
     "type": "git",
@@ -23,8 +23,8 @@
   ],
   "keywords": [
     "omelo-admin",
-    "pomelo-admin",
-    "pomelo",
+    "omelo-admin",
+    "omelo",
     "framework",
     "game",
     "web",
