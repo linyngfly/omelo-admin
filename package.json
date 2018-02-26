@@ -1,6 +1,6 @@
 {
   "name": "omelo-admin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "deprecated": false,
   "description": "`omelo-admin` is base omelo, support es6 version",
